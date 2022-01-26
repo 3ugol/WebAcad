@@ -1,0 +1,2 @@
+.devopsua.t
+print('hi')
