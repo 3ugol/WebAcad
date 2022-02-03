@@ -4,7 +4,7 @@ lessons
 lesson1
 
 # 18.6 Commit best practices
-Ideally, each commit should be minimal but complete:
+Ideally, each commit should be * *minimal* * but * *complete:* *
 
 - **Minimal:** A commit should only contain changes related to a single problem. This will make it easier to understand the commit at a glance, and to describe it with a simple message. If you should discover a new problem, you should do a separate commit.
 
@@ -18,13 +18,13 @@ Each commit message should:
 
 If you do this:
 
--It’ll be easier to work with others. For example, if two people have changed the same file in the same place, it’ll be easier to resolve conflicts if the commits are small and it’s clear why each change was made.
+- It’ll be easier to work with others. For example, if two people have changed the same file in the same place, it’ll be easier to resolve conflicts if the commits are small and it’s clear why each change was made.
 
--Project newcomers can more easily understand the history by reading the commit logs.
+- Project newcomers can more easily understand the history by reading the commit logs.
 
--You can load and run your package at any point along its development history. This can be tremendously useful with tools like bisectr, which allow you to use binary search to quickly find the commit that introduced a bug.
+- You can load and run your package at any point along its development history. This can be tremendously useful with tools like [bisectr](https://github.com/wch/bisectr), which allow you to use binary search to quickly find the commit that introduced a bug.
 
--If you can figure out exactly when a bug was introduced, you can easily understand what you were doing (and why!).
+- If you can figure out exactly when a bug was introduced, you can easily understand what you were doing (and why!).
 
 You might think that because no one else will ever look at your repo, that writing good commit messages is not worth the effort. But keep in mind that you have one very important collaborator: future-you! If you spend a little time now polishing your commit messages, future-you will thank you if and when they need to do a post-mortem on a bug.
 
