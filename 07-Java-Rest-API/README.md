@@ -15,6 +15,7 @@
 ### Завдання 2
 1. Запустити kaniko docker (gcr.io/kaniko-project/executor:debug)
  із параметрами та збілдити Python-Redis docker image.
+ https://github.com/GoogleContainerTools/kaniko
 
 Критерій виконання:
   run.sh файл містить команду запуску kaniko контейнера із параметрами build Dockerfile.
