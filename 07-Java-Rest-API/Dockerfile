@@ -1,26 +1,46 @@
-FROM python:3-alpine
+FROM openjdk:8-jdk AS builder
 
-WORKDIR /app
+ARG ssh_prv_key
+ARG ssh_pub_key
 
-ENV REDIS_HOST="localhost" \
-    REDIS_PASS="none"
+WORKDIR /app-j
 
-ARG MY_ARG
-ARG SECOND
+# Authorize SSH Host
+RUN mkdir -p /root/.ssh && \
+    chmod 0700 /root/.ssh && \
+    ssh-keyscan github.com > /root/.ssh/known_hosts
 
-ADD requirements.txt /app/requirements.txt
-RUN echo "this is $MY_ARG" \
-    && pip install -r requirements.txt
+# Add the keys and set permissions
+RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
+    echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
+    chmod 600 /root/.ssh/id_rsa && \
+    chmod 600 /root/.ssh/id_rsa.pub
 
-RUN echo "$SECOND"
+RUN git clone git@github.com:3ugol/WebAcad.git
 
-ADD app.py /app/app.py
+#RUN cd ./WebAcad/07-Java-Rest-API
+#RUN ls -a ./WebAcad/07-Java-Rest-API
+#RUN ls -a
+RUN wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+RUN tar xzvf apache-maven-3.8.6-bin.tar.gz -C /opt/
 
-EXPOSE 8080
+RUN /opt/apache-maven-3.8.6/bin/mvn clean --file ./WebAcad/07-Java-Rest-API/pom.xml install  -Dmaven.test.skip=true
+
+#ADD app.py /app-j/app.py
+
+RUN rm -rf /root/.ssh/
+
+
+FROM openjdk:8-jre
+WORKDIR /app-s
+COPY --from=builder /app-j/WebAcad/07-Java-Rest-API/target/rest-service-complete-0.0.1-SNAPSHOT.jar ./app.jar
+RUN ls -a
+ENTRYPOINT ["java","-jar","app.jar"]
+#CMD [ "./rest-service-complete-0.0.1-SNAPSHOT.jar" ]
 
 #RUN ln -sf /bin/bash /bin/sh
 #RUN useradd -r /bin/bash -u 8877 userwa
 #USER userwa
 
-ENTRYPOINT ["python3"]
-CMD [ "./app.py" ]
+#ENTRYPOINT ["python3"]
+#CMD [ "./app.py" ]
