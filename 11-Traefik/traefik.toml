@@ -1,0 +1,33 @@
+[log]
+level = "DEBUG"
+
+[accessLog]
+filePath = "/var/log/access.log"
+format = "json"
+bufferingSize = 1200
+
+[entryPoints]
+    [entryPoints.http]
+    address = ":80"
+
+[entryPoints.dashboard]
+address = "0.0.0.0:9999"
+
+[entryPoints.prometheus]
+address = "0.0.0.0:9100"
+
+[api]
+dashboard = true
+insecure = true
+
+[metrics]
+    [metrics.prometheus]
+    entryPoint = "prometheus"
+
+[providers]
+    [providers.file]
+    directory = "/etc/traefik/rules"
+    watch = true
+
+[providers.docker]
+endpoint = "unix:///var/run/docker.sock"
