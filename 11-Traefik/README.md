@@ -15,8 +15,11 @@ green if path begin /green
 ```
 
 Критерій виконання:
+
  red.py файл містить Python code.
+ 
  green.py файл містить Python code.
+ 
  docker-script.sh файл містить команди запуску контейнерів.
 
 Виконане завдання оформити у вигляді pull request.
