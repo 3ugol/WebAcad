@@ -22,4 +22,12 @@ green if path begin /green
  
  docker-script.sh файл містить команди запуску контейнерів.
 
+### Завдання 2*
+
+1. Зробити rewrite url /red -> /green
+Користувач набирає в бровзері /red, але потрапляє на /green
+
+2. Зробити redirect url 301 /red -> /green
+Користувач набирає в бровзері /red, але бровзер змінює url на /green
+
 Виконане завдання оформити у вигляді pull request.
