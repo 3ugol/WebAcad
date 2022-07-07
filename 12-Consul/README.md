@@ -16,4 +16,4 @@ dig @127.0.0.1 -p 8600 -t srv web.service.consul
 ### Завдання 2
 
 Підготувати Linux servers для розгортання Kubernetes.
-minimum 2 servers
+minimum 2 servers (kubeadm, containerd/docker/cri-o, kubelet)
