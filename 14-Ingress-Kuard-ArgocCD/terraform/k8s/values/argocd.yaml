@@ -1,0 +1,22 @@
+redis:
+  metrics:
+    enabled: true
+  serviceMonitor:
+    enabled: false
+server:
+  metrics:
+    enabled: true
+  serviceMonitor:
+    enabled: false
+  extraArgs:
+    - --insecure
+  ingress:
+    enabled: true
+    hosts:
+     - argocd.devopsua.tk
+  config:
+    url: https://argocd.devopsua.tk
+configs:
+  secret:
+    argocdServerAdminPassword: "$2a$10$QnjaeGBeitbR6jtDFeK7KemojXkdWk/5GSkJrhDqnGlb5MP/Yxseq"  # admin - hash
+    argocdServerAdminPasswordMtime: "2006-01-02T15:04:05Z"
