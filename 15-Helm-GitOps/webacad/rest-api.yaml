@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rest-api
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  project: default
+  source:
+    repoURL: http://gitlab.devopsua.tk/3005/staging-argocd-apps.git
+    targetRevision: HEAD
+    path: helm-charts/rest-api
+    helm:
+      values: |
+        fullnameOverride: "rest-api"
+        image:
+          tag: "v0.1.0"
+        ingress:
+          enabled: true
+          annotations: {}
+          hosts:
+            - host: rest-api.devopsua.tk
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls: []
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo
