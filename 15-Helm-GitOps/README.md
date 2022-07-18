@@ -8,3 +8,6 @@
 ArgoCD успішно розгортає Redis та Python Flask в Kubernetes.
 
 Виконане завдання оформити у вигляді pull request.
+
+### Завдання 2
+1. Встановити ArgoCD Notifications Helm chart.
