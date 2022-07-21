@@ -1,5 +1,5 @@
 # Base image
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /wa-app
 EXPOSE 80
 
@@ -12,7 +12,7 @@ COPY ./wa-app/ ./
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 ARG BUILD_NUMBER
 ARG API_VERSION
 # Set one or more individual labels

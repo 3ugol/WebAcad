@@ -1,0 +1,72 @@
+######################
+# Example Deployment #
+######################
+---
+- hosts: all
+  become:
+    true
+  gather_facts: true
+  vars:
+    app_version: "{{ appVersion }}"
+    art_pass: "{{ jFrogPass }}"
+  tasks:
+    - name: Install aptitude
+      ansible.builtin.apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      ansible.builtin.apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
+    - name: Add Docker GPG apt Key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      ansible.builtin.apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu jammy stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      ansible.builtin.apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Install Docker Module for Python
+      ansible.builtin.pip:
+        name: docker
+
+    - name: Log into private registry and force re-authorization
+      community.docker.docker_login:
+        registry_url: waquarkops.jfrog.io
+        username: alxspzv@gmail.com
+        password: "{{ art_pass }}"
+        reauthorize: yes
+
+    - name: Pull Docker image
+      community.docker.docker_image:
+        name: "waquarkops.jfrog.io/wa-docker-local/wa-app:{{ app_version }}"
+        source: pull
+
+    - name: Create container
+      community.docker.docker_container:
+        name: "wa-app-dev"
+        image: "waquarkops.jfrog.io/wa-docker-local/wa-app:{{ app_version }}"
+        state: started
+        recreate: yes
+        exposed_ports:
+          - 80
+        ports:
+          - "80:80"
