@@ -1,0 +1,38 @@
+######################
+# LEMP Playbook      #
+######################
+---
+- hosts: master
+  become: true
+  gather_facts: true
+  vars: 
+    test_var: "WA Test"
+    php_version: 8
+
+  roles:
+    - nginx
+  
+  tasks:
+  - name: Reload nginx
+    ansible.builtin.service:
+      name: nginx
+      state: "reloaded"
+  
+  - name: Test vars
+    ansible.builtin.debug:
+      msg: "Variable is set {{ test_var }} in time {{ansible_date_time}}"
+
+  - name: Print facts
+    ansible.builtin.debug:
+      var: ansible_facts
+
+  # - name: Print debug php version
+  #   ansible.builtin.debug:
+  #     msg: "WA PHP version is correct!"
+  #   when: php_version > 7 and php_version < 8
+  
+  - name: Print debug php version
+    ansible.builtin.debug:
+      msg: "WA PHP version is incorrect!"
+    when: php_version  = 8
+
