@@ -2,16 +2,6 @@
 
 #### HW
 
-- [Lesson 1 - Git](#lesson-1---git)
-      - [HW](#hw)
-      - [Створити remote репозиторій на одній з платформ на вибір(або на власному сервері за наявності):](#---------remote--------------------------------------------------------------------------------)
-          + [GitHub](#github)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
-[TOC]
-
 #### Створити remote репозиторій на одній з платформ на вибір(або на власному сервері за наявності):
 
 ###### GitHub
