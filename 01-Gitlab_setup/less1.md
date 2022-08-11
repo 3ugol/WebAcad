@@ -2,14 +2,11 @@
 
 #### HW
 
-
 [TOC]
 
+#### Створити remote репозиторій на одній з платформ на вибір(або на власному сервері за наявності):
 
-
-####Створити remote репозиторій на одній з платформ на вибір(або на власному сервері за наявності):
-
-######GitHub
+###### GitHub
 
 ![](githab.com)](https://img001.prntscr.com/file/img001/hg0P4wptSy2YknMT6lnH2g.png)
 
@@ -19,7 +16,7 @@ GitLab
 
 Bitbucket
 
-####Налаштувати репозиторій на локальній машині
+#### Налаштувати репозиторій на локальній машині
 
 на windows
 інсталюємо git bash `<link>` : <https://git-scm.com/download/win>
@@ -28,7 +25,7 @@ Bitbucket
 `> git config --global --add user.email global-config@example.com`
 клонуемо репозеторій
 `> git clone git@github.com:3ugol/WebAcad.git`
-####Створити гілки main/master, development
+#### Створити гілки main/master, development
 створіть новий репозиторій у командному рядку
 
 `>echo "# test" >> README.md`
@@ -41,17 +38,17 @@ Bitbucket
 
 `>git checkout -b development`
 
-####Зробити feature branch, покласти туди любий текстовий файл та зробити ряд комітів
+#### Зробити feature branch, покласти туди любий текстовий файл та зробити ряд комітів
 `>git checkout -b feature`
 `>echo "#crate commite" >> README.md`
 `>git add .`
 `>git commit -m "[OKOTV]my first commit"`
 `>vim less1.md`
 `>git commit -a -m 'Create new file'`
-####Змережити зміни с dev гілкою
+#### Змережити зміни с dev гілкою
 `>git checkout development`
 `>git merge feature`
-####Спробувати роботу з тегами
+#### Спробувати роботу з тегами
 `>git tag -a v0.0.1 -m "my version 0.0.1"`
 `>git show v0.0.1`
 `>git push origin v0.0.1`
