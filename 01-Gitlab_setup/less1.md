@@ -2,9 +2,13 @@
 
 #### HW
 
+
 [TOC]
 
+
+
 ####Створити remote репозиторій на одній з платформ на вибір(або на власному сервері за наявності):
+
 ######GitHub
 
 ![](githab.com)](https://img001.prntscr.com/file/img001/hg0P4wptSy2YknMT6lnH2g.png)
