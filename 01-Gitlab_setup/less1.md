@@ -1,5 +1,6 @@
 # Lesson 1 - Git
 
+
 #### HW
 
 #### Створити remote репозиторій на одній з платформ на вибір(або на власному сервері за наявності):
@@ -17,7 +18,7 @@ Bitbucket
 #### Налаштувати репозиторій на локальній машині
 
 на windows
-інсталюємо git bash `<link>` : <https://git-scm.com/download/win>
+інсталюємо git bash [link] (https://git-scm.com/download/win)
 налаштовуемо оточення
 `> git config --global --add user.name cameronmcnz`
 `> git config --global --add user.email global-config@example.com`
